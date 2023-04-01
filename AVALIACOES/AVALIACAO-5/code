@@ -1,0 +1,20 @@
+.header on 
+.mode column 
+  Create Table produtos ( 
+  nome text, 
+  id integer, 
+  valor real 
+  ); 
+
+Insert into produtos Values
+   ('Vestido', 11221091, 129.99), 
+   ('Calça', 29506260, 119.99),
+   ('Moletom', 10591446, 109.99), 
+   ('Blusa', 67787102, 89.99), 
+   ('Short', 86306617, 99.99);
+  
+Delete from produtos where id= 11221091;
+   
+Select * from produtos;
+
+
