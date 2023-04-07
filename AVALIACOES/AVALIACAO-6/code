@@ -1,0 +1,45 @@
+.header
+.mode column
+ --criando tabela curso
+create table tb_curso(
+  id integer primary key autoincrement,
+  nome text
+  );
+ 
+--criando tabela professor
+create table tb_professor(
+    id integer primary key autoincrement,
+    nome text
+curso_id integer,
+foreign key (curso_id)
+references tb_curso(id)
+);
+
+--inserindo registros na tabela curso
+insert into tb_curso(nome) values("Edificaçoes"), ("Eletrotécnica"), ("Informatica"), ("Mecanica"), ("Quimica"),("Telecomunicaçoes"), ("Turismo");
+
+--inserindo registros na tabela professor 
+insert into tb_professor(nome) values("Cesar Olavo"), ("Davis Macedo"), ("Gloria Marinho"), ("Jose Roberto"), ("Marcos Lemos"),("Mauricio Jaborandi"), ("Serra Furtado");
+
+--criando tabela cruso-professor e implementando relacionamento
+create table tb_curso_professor (
+id integer primary key autoincrement,
+  curso_id integer,
+  professor_id integer,
+  foreign key (curso_id)
+  references tb_curso(id),
+  foreign key (professor_id)
+  references tb_professor(id)
+);
+
+--associando professores aos cursos e inserindo registros a tabela curso-professor
+select * from tb_curso;
+select * from tb_professor;
+
+insert into tb_curso_professor(curso_id, professor_id) values (1,1), (1,2), (1,3), (1,4), (4,5), (7,7);
+select * from tb_curso_professor;
+
+select tb_curso.nome, tb_professor.nome
+from tb_curso
+inner join tb_curso_professor on tb_curso.id = tb_curso_professor.curso_id
+inner join tb_professor on tb_professor.id = tb_curso_professor.professor_id;
